@@ -5,8 +5,8 @@ const app = express();
 const db = require("./apps/models");
 const multer = require("multer");
 const path = require("path");
-const userRoutes = require("./apps/routes/users");
-const authRoutes = require("./apps/routes/auth");
+const userRoutes = require("./apps/routes/register");
+const authRoutes = require("./apps/routes/login");
 
 //image to database
 const fileStorage = multer.diskStorage({
@@ -40,8 +40,8 @@ app.use(express.json());
 
 /* Start Connect From Login */
 
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
+app.use("/register", userRoutes);
+app.use("/login", authRoutes);
 
 /* End Connect From Login */
 
@@ -61,7 +61,7 @@ db.mongoose
   });
 
 //call routes hewan
-require("./apps/routes/hewan.routes")(app);
+require("./apps/routes/user.routes")(app);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));

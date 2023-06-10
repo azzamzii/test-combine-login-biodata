@@ -43,7 +43,7 @@ module.exports = (mongoose) => {
     return token;
   };
 
-  const User = mongoose.model("userbio", userSchema);
+  const User = mongoose.model("biodata", userSchema);
 
   return {
     User,
